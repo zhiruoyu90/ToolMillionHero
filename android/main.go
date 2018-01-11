@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/SongCF/ToolMillionHero/baidu/ocr"
+	"../baidu/ocr"
 )
 
 func main() {

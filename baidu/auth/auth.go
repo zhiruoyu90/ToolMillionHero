@@ -2,11 +2,11 @@ package auth
 
 import (
 	"fmt"
-	"github.com/SongCF/ToolMillionHero/baidu"
-	"github.com/SongCF/ToolMillionHero/utils"
-	"github.com/kataras/go-errors"
+	"../../baidu"
+	"../../utils"
 	"log"
 	"time"
+	"errors"
 )
 
 type Token struct {

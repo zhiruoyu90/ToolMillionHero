@@ -3,9 +3,8 @@ package ocr
 import (
 	"encoding/base64"
 	"fmt"
-	"github.com/SongCF/ToolMillionHero/baidu/auth"
-	"github.com/SongCF/ToolMillionHero/utils"
-	"github.com/kataras/go-errors"
+	"../../baidu/auth"
+	"../../utils"
 	"image"
 	"image/png"
 	"io"
@@ -13,6 +12,7 @@ import (
 	"log"
 	"net/url"
 	"os"
+	"errors"
 )
 
 //网络图片文字识别
