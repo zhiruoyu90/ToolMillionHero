@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/SongCF/ToolMillionHero/baidu/ocr"
-	"github.com/SongCF/ToolMillionHero/baidu/search"
+	"../baidu/ocr"
+	"../baidu/search"
 	"log"
 	"os/exec"
 	"sort"
@@ -11,10 +11,17 @@ import (
 	"time"
 )
 
+const (
+	adbPath = "D:\\tools\\platform(adb&fastboot)-tools-latest-windows\\platform-tools\\"
+	imgPath = "D:\\__screenshot\\golang\\"
+	screenshotName = "screenshot.png"
+)
+
 func main() {
-	const filename = "screenshot.png"
-	//Screenshot(filename) // adb shell 在golang里用不了
 	bt := time.Now()
+	var filename = bt.Format("2006-01-02T15:04:05Z07:00")
+	Screenshot(filename) // adb shell 在golang里用不了
+	bt = time.Now()
 	words, err := ocr.GetImageText(filename)
 	log.Println("ts: GetImageText", time.Since(bt))
 	if err != nil {
@@ -68,13 +75,14 @@ func Screenshot(filename string) {
 	var str string
 	var cmd *exec.Cmd
 	var err error
-	str = fmt.Sprintf("adb shell /system/bin/screencap -p /data/local/tmp/%s", filename)
+	//str = fmt.Sprintf("adb shell /system/bin/screencap -p /data/local/tmp/%s", filename)
+	str = fmt.Sprintf("%sadb shell /system/bin/screencap -p /sdcard/%s", adbPath, screenshotName)
 	cmd = exec.Command(str)
 	err = cmd.Run()
 	if err != nil {
 		panic("screenshot failed:" + err.Error())
 	}
-	str = fmt.Sprintf("adb pull /data/local/tmp/%s ./", filename)
+	str = fmt.Sprintf("%sadb pull /sdcard/%s %s", adbPath, screenshotName, imgPath + filename)
 	cmd = exec.Command(str)
 	err = cmd.Run()
 	if err != nil {

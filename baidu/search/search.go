@@ -2,7 +2,7 @@ package search
 
 import (
 	"fmt"
-	"github.com/SongCF/ToolMillionHero/utils"
+	"../../utils"
 	"net/url"
 	"regexp"
 	"strings"

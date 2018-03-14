@@ -3,10 +3,10 @@ package auth
 import (
 	"errors"
 	"fmt"
-	"github.com/SongCF/ToolMillionHero/baidu"
-	"github.com/SongCF/ToolMillionHero/utils"
+	"../../utils"
 	"log"
 	"time"
+	"../../baidu"
 )
 
 type Token struct {
